@@ -6,7 +6,7 @@ import (
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"log"
-	"socker/gb"
+	"socker-go/gb"
 	"time"
 )
 

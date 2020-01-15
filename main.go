@@ -3,8 +3,8 @@ package main
 import (
 	"net"
 	"os"
-	"socker/gb"
-	logCondf "socker/gb/conf"
+	"socker-go/gb"
+	logCondf "socker-go/gb/conf"
 )
 
 func init() {

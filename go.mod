@@ -1,4 +1,4 @@
-module socker
+module socker-go
 
 go 1.13
 
