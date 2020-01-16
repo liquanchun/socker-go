@@ -15,14 +15,13 @@ func main() {
 	// server peer
 	srv := erpc.NewPeer(erpc.PeerConfig{
 		CountTime:   true,
-		ListenPort:  8080,
+		ListenPort:  8000,
 		PrintDetail: true,
 	})
 	// srv.SetTLSConfig(erpc.GenerateTLSConfigForServer())
 
 	// router
 	srv.RouteCall(new(Math))
-
 	// broadcast per 5s
 	go func() {
 		for {
