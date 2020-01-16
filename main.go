@@ -8,13 +8,25 @@ import (
 	logCondf "socker-go/gb/conf"
 )
 
+//与服务器相关的资源都放在这里面
+type TcpServer struct {
+	listener   *net.TCPListener
+	hawkServer *net.TCPAddr
+}
+
 func init() {
 	logCondf.LogConf()
 }
 
 func main() {
+	hawkServer, err := net.ResolveTCPAddr("tcp", "127.0.0.1:8080")
+	if err != nil {
+		gb.Logger.Error(os.Stderr, "Fatal error: %s", err.Error())
+		fmt.Printf("Fatal error: %s", err.Error())
+		return
+	}
 	//建立socket端口监听
-	netListen, err := net.Listen("tcp", "127.0.0.1:8080")
+	netListen, err := net.ListenTCP("tcp", hawkServer)
 	if err != nil {
 		gb.Logger.Error(os.Stderr, "Fatal error: %s", err.Error())
 		fmt.Printf("Fatal error: %s", err.Error())
@@ -22,12 +34,15 @@ func main() {
 	}
 
 	defer netListen.Close()
-
+	tcpServer := &TcpServer{
+		listener:   netListen,
+		hawkServer: hawkServer,
+	}
 	gb.Logger.Info("Waiting for clients to connetion port 8080......")
 
 	//等待客户端访问
 	for {
-		conn, err := netListen.Accept() //监听接收
+		conn, err := tcpServer.listener.Accept() //监听接收
 		if err != nil {
 			continue //如果发生错误，继续下一个循环。
 		}
