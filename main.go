@@ -14,7 +14,7 @@ func init() {
 
 func main() {
 	//建立socket端口监听
-	netListen, err := net.Listen("tcp", "localhost:8080")
+	netListen, err := net.Listen("tcp", "127.0.0.1:8080")
 	if err != nil {
 		gb.Logger.Error(os.Stderr, "Fatal error: %s", err.Error())
 		fmt.Printf("Fatal error: %s", err.Error())
