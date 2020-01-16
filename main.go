@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net"
 	"os"
 	"socker-go/gb"
@@ -13,8 +14,12 @@ func init() {
 
 func main() {
 	//建立socket端口监听
-	netListen, err := net.Listen("tcp", "193.112.155.251:8080")
-	CheckError(err)
+	netListen, err := net.Listen("tcp", "localhost:8080")
+	if err != nil {
+		gb.Logger.Error(os.Stderr, "Fatal error: %s", err.Error())
+		fmt.Printf("Fatal error: %s", err.Error())
+		return
+	}
 
 	defer netListen.Close()
 
@@ -48,12 +53,5 @@ func handleConnection(conn net.Conn) {
 		//返回给客户端的信息
 		strTemp := "send data is ok : " + string(buffer[:n])
 		conn.Write([]byte(strTemp))
-	}
-}
-
-//错误处理
-func CheckError(err error) {
-	if err != nil {
-		gb.Logger.Error(os.Stderr, "Fatal error: %s", err.Error())
 	}
 }
