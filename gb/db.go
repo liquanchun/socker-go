@@ -25,11 +25,12 @@ func InitDb() {
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		fmt.Printf("Open mysql failed,err:%v\n", err)
+		Logger.Error("Open mysql failed,err:%v\n", err)
 		return
 	}
 	err = db.Ping() //尝试连接校验用户名密码
 	if err != nil {
-		fmt.Printf("open %s failed, err:%s\n", dsn, err)
+		Logger.Error("open %s failed, err:%s\n", dsn, err)
 	}
 	DB = db
 	fmt.Printf("Db connected success !\n")
@@ -45,6 +46,7 @@ func SaveToDB(msg, ip string) {
 	}
 	_, err := DB.Exec(sqlStr)
 	if err != nil {
+		Logger.Error("insert faild,err:%v\n", err)
 		fmt.Printf("insert faild,err:%v\n", err)
 	}
 }
