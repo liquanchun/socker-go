@@ -5,6 +5,7 @@ go 1.13
 require (
 	github.com/firstrow/tcp_server v0.0.0-20190424084220-b7a05ff2879d
 	github.com/gin-gonic/gin v1.5.0
+	github.com/go-sql-driver/mysql v1.5.0
 	github.com/henrylee2cn/erpc/v6 v6.3.1
 	github.com/leesper/holmes v0.0.0-20190916004209-307d8a307864
 	github.com/leesper/tao v0.0.0-20180126151721-50d6193148cc
