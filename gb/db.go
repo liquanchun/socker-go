@@ -33,7 +33,7 @@ func InitDb() {
 		Logger.Error("open %s failed, err:%s\n", dsn, err)
 	}
 	DB = db
-	fmt.Printf("Db connected success !\n")
+	Logger.Info("Db connected success !\n")
 }
 
 // SaveToStockDay 保存数据到 stock_day数据库
