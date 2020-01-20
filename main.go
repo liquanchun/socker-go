@@ -34,4 +34,5 @@ func Test() {
 	fmt.Println("this is test func")
 	fmt.Println("add test branch")
 	fmt.Println("add abc branch")
+	fmt.Println("add test test")
 }
