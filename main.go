@@ -30,3 +30,6 @@ func main() {
 		gb.Logger.Info("Waiting for clients to connetion port 8080......")
 	}
 }
+func Test() {
+	fmt.Println("this is test func")
+}
