@@ -12,6 +12,8 @@ func init() {
 	logCondf.LogConf()
 	gb.InitDb()
 }
+
+// 添加git分支
 func main() {
 	var events evio.Events
 	events.Data = func(c evio.Conn, in []byte) (out []byte, action evio.Action) {
